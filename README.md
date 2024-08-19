@@ -1,6 +1,6 @@
-# Chatbot 
+# Dual_Chatbot 
 
-This project implements a modular and scalable chatbot using Flask and the Ollama LLM model. The chatbot is designed to be easily extendable, with separate components for handling different data sources and generating responses.
+This project implements a modular and scalable chatbot using Flask and the Ollama LLM model where one RAG model for generating Prompt and other for results. The chatbot is designed to be easily extendable, with separate components for handling different data sources and generating responses.
 
 ## File Structure
 
@@ -101,11 +101,12 @@ To integrate the new model into the chatbot, follow these steps:
 
 Here's an example image related to the project:
 
-![image](https://github.com/user-attachments/assets/f4b7aefa-ff76-40d7-bf65-1171413f3e49)
+![Interface](https://github.com/user-attachments/assets/058cf32f-078a-4da4-bbc8-26cd3edb6505)
+
 
 ## Issues with the Model
 
-### 1. Very Slow Performance
+### 1. Very Slow Performanc
 
 #### Problem
 The model might be running slowly due to several factors:
@@ -114,10 +115,27 @@ The model might be running slowly due to several factors:
 - **Open Source Model**: Using Open-source model can also affect performance, also Limited hardware resources, such as insufficient RAM or GPU power can be potential reasons.
 
 
-### 2. Responses Too Specific to Documents
 
-#### Problem
-The model may generate responses that are overly specific to the given document rather than providing general or diverse responses.
+**Increased Complexity:**
+   - Managing two separate models adds complexity to the codebase, making it harder to maintain and debug. Any updates or bug fixes must be applied to both models, increasing the likelihood of errors.
+**Resource Consumption:**
+   - Running two models simultaneously consumes more computational resources (CPU, GPU, and memory). This can lead to slower performance, especially on resource-constrained systems, and may require more powerful hardware or cloud resources.
+
+**Higher Latency:**
+   - Each model requires processing time, and using two models can lead to increased latency, especially if they are both being queried simultaneously. This could degrade the user experience, particularly in real-time applications.
+
+**Redundant Functionality:**
+   - If the models are performing similar tasks, having two of them can lead to redundant processing. This may result in wasted resources without providing significant additional benefits in terms of functionality or accuracy.
+
+**Synchronization Challenges:**
+   - Ensuring that both models are synchronized and that their outputs are consistent can be challenging. Differences in their training data or updates to one model but not the other can lead to inconsistent or contradictory outputs.
+**Deployment and Scalability Issues:**
+   - Deploying and scaling a system with two models is more complex than managing a single model. This can complicate the deployment pipeline, increase the cost of scaling, and introduce more points of failure.
+
+**Increased Cost:**
+   - Running two models can double the operational costs, including infrastructure, development, and maintenance. This is particularly relevant if you are using cloud-based services where costs scale with usage.
+
+
 
 
 ### Solutions
